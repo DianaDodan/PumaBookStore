@@ -1,15 +1,10 @@
 package com.puma.pumabookstore.service;
 
 import com.puma.pumabookstore.domain.Book;
-import com.puma.pumabookstore.dto.BookDto;
 import com.puma.pumabookstore.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class BookService {
@@ -41,6 +36,10 @@ public class BookService {
         } else {
             return bookRepository.getBooksByAuthorOrTitle(author, title);
         }
+    }
+
+    public Collection<Book> getBooksInPriceRange(double minimumPrice, double maximumPrice) {
+        return bookRepository.getBooksBetweenPrice(minimumPrice, maximumPrice);
     }
 }
 

@@ -11,13 +11,21 @@ public class Book {
     private int id;
     private String author;
     private String title;
+    private double price;
+    private int totalPages;
 
-    public Book(String author, String title) {
+    public Book(String author, String title, double price, int totalPages) {
         this.author = author;
         this.title = title;
+        this.price = price;
+        this.totalPages = totalPages;
     }
 
     public Book() {
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getAuthor() {
@@ -28,16 +36,16 @@ public class Book {
         return title;
     }
 
-    public int getId() {
-        return id;
+    public double getPrice() {
+        return price;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                ", title='" + title + '\'' +
-                '}';
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
@@ -45,12 +53,26 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(author, book.author) &&
+        return id == book.id &&
+                Double.compare(book.price, price) == 0 &&
+                totalPages == book.totalPages &&
+                Objects.equals(author, book.author) &&
                 Objects.equals(title, book.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(author, title);
+        return Objects.hash(id, author, title, price, totalPages);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", totalPages=" + totalPages +
+                '}';
     }
 }

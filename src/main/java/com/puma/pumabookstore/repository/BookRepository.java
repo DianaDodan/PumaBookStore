@@ -15,4 +15,6 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     @Query(value = "SELECT * FROM BOOK WHERE AUTHOR = ?1 AND TITLE = ?2", nativeQuery = true)
     public Collection<Book> getBooksByAuthorAndTitle(String author, String title);
 
+    @Query(value = "SELECT * FROM BOOK WHERE PRICE BETWEEN ?1 AND ?2", nativeQuery = true)
+    public Collection<Book> getBooksBetweenPrice(double minimumPrice, double maximumPrice);
 }

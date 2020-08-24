@@ -46,4 +46,10 @@ public class BookController {
         bookService.deleteBook(id);
         return ResponseEntity.ok("The book has been successfully deleted.");
     }
+
+    @GetMapping("/price")
+    public ResponseEntity<Collection<Book>> filterByMaximumAndMinimumPrice(@RequestParam(value = "minimumPrice", defaultValue = "0.00") double minimumPrice,
+                                                                           @RequestParam(value = "maximumPrice", required = true) double maximumPrice) {
+        return ResponseEntity.ok(bookService.getBooksInPriceRange(minimumPrice, maximumPrice));
+    }
 }
