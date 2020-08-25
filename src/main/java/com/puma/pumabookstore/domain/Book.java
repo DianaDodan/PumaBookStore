@@ -12,13 +12,13 @@ public class Book {
     private String author;
     private String title;
     private double price;
-    private int totalPages;
+    private int pageCount;
 
-    public Book(String author, String title, double price, int totalPages) {
+    public Book(String author, String title, double price, int pageCount) {
         this.author = author;
         this.title = title;
         this.price = price;
-        this.totalPages = totalPages;
+        this.pageCount = pageCount;
     }
 
     public Book() {
@@ -40,8 +40,8 @@ public class Book {
         return price;
     }
 
-    public int getTotalPages() {
-        return totalPages;
+    public int getPageCount() {
+        return pageCount;
     }
 
     public void setPrice(double price) {
@@ -55,14 +55,14 @@ public class Book {
         Book book = (Book) o;
         return id == book.id &&
                 Double.compare(book.price, price) == 0 &&
-                totalPages == book.totalPages &&
+                pageCount == book.pageCount &&
                 Objects.equals(author, book.author) &&
                 Objects.equals(title, book.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, author, title, price, totalPages);
+        return Objects.hash(id, author, title, price, pageCount);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
-                ", totalPages=" + totalPages +
+                ", totalPages=" + pageCount +
                 '}';
     }
 }

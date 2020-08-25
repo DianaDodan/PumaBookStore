@@ -8,17 +8,12 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class BookTransformer {
-    /**
-     * transform DTO book into an object
-     * @param bookDto bookDTO
-     * @return Book transformed book
-     */
     public static Book transform(BookDto bookDto) {
-        return new Book(bookDto.getAuthor(), bookDto.getTitle());
+        return new Book(bookDto.getAuthor(), bookDto.getTitle(), bookDto.getPrice(), bookDto.getPageCount());
     }
 
     public static BookDto transform(Book book) {
-        return new BookDto(book.getAuthor(), book.getTitle());
+        return new BookDto(book.getAuthor(), book.getTitle(), book.getPrice(), book.getPageCount());
     }
 
     public static Collection<Book> transform(Collection<BookDto> bookDtos) {

@@ -8,12 +8,18 @@ import java.util.Objects;
 public class BookDto {
     private final String author;
     private final String title;
+    private double price;
+    private final int pageCount;
 
     @JsonCreator
     public BookDto(@JsonProperty("author") String author,
-                   @JsonProperty("title") String title) {
+                   @JsonProperty("title") String title,
+                   @JsonProperty("price") double price,
+                   @JsonProperty("pageCount") int pageCount) {
         this.author = author;
         this.title = title;
+        this.price = price;
+        this.pageCount = pageCount;
     }
 
     public String getAuthor() {
@@ -22,6 +28,14 @@ public class BookDto {
 
     public String getTitle() {
         return title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getPageCount() {
+        return pageCount;
     }
 
     @Override
